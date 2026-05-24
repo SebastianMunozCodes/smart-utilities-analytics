@@ -29,6 +29,9 @@ df.columns = (
 print("\nCleaned column names:")
 print(df.columns.tolist())
 
+print("\nMissing values after column selection:")
+print(df.isna().sum())
+
 print("-" * 100)
 
 print("First 5 rows:")

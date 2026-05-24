@@ -149,3 +149,15 @@ Specific cleaning steps for this dataset:
 At this stage, all columns will be kept temporaroly. Although many columns currently apeear as 'unamed' columns, they should not be removed yet becuase this data set has multi-row reader. Some of these columns contain important information such as year, month, state, data status, sales, customers, and price.
 
 The column selection step will be revisited after the header rows are cleaned and meaningful column names are created. This avoids accidentally deleting useful data before the dataset structure is fully understood.
+
+### Missing Values Decision
+
+Missing values will not be filled or dropped immediately. The current missing values appear to come mainly from the dataset's multi-row header structure and non-data rows.
+
+The plan is to clean the header structure first, remove non-data rows, and then check missing values again on the cleaned dataset.
+
+After header cleanup:
+- Rows missing year, month, or state will be removed.
+- Rows missing important numeric fields such as sales, customers, or price will be investigated.
+- Numeric values will not be filled with guesses.
+- Category fields may be filled with 'Unknown' only if needed.
