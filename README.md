@@ -120,3 +120,27 @@ Possible questions to answer:
 - Run SQL analysis
 - Generate summary reports
 - Create charts
+
+## Cleaning Plan
+
+Cleaning steps planned:
+- Standardize column names
+- Remove unnecessary columns
+- Check for missing values
+- Convert numeric columns to proper number types
+- Keep useful location and time columns
+- Save cleaned data to 'data/cleaned/'
+
+Specific cleaning steps for this dataset:
+- Remove extra header rows that are being read as regular data
+- Use meaningful column names instead of 'Unnamed' columns
+- Rename columns to lowercase with underscores
+- Keep useful time columns such as year and month
+- Keep the location column for state
+- Keep electricity sector data such as residential, commercial, industrial, transportation, and total
+- Keep key measurement columns related to sales, customers, and price
+- Convert sales values from text with commas into numeric values
+- Convert customer counts from text with commas into numeric values
+- Convert price values into numeric decimals
+- Remove the footer note row at the bottom of the dataset
+- Save the cleaned dataset as 'utility_usage_cleaned.csv' in 'data/cleaned/'
