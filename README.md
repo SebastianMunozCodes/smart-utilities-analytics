@@ -144,3 +144,8 @@ Specific cleaning steps for this dataset:
 - Convert price values into numeric decimals
 - Remove the footer note row at the bottom of the dataset
 - Save the cleaned dataset as 'utility_usage_cleaned.csv' in 'data/cleaned/'
+
+### Column Selection Decision
+At this stage, all columns will be kept temporaroly. Although many columns currently apeear as 'unamed' columns, they should not be removed yet becuase this data set has multi-row reader. Some of these columns contain important information such as year, month, state, data status, sales, customers, and price.
+
+The column selection step will be revisited after the header rows are cleaned and meaningful column names are created. This avoids accidentally deleting useful data before the dataset structure is fully understood.
