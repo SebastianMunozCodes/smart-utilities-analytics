@@ -124,40 +124,51 @@ Possible questions to answer:
 ## Cleaning Plan
 
 Cleaning steps planned:
-- Standardize column names
-- Remove unnecessary columns
-- Check for missing values
-- Convert numeric columns to proper number types
-- Keep useful location and time columns
-- Save cleaned data to 'data/cleaned/'
+- Load and inspect the raw EIA electricity sales and revenue CSV.
+- Standardize the initial column names.
+- Rebuild meaningful column names from the dataset's multi-row header structure.
+- Remove non-data rows, including extra header rows and the footer note row.
+- Check for missing values after removing non-data rows.
+- Keep useful location, time, sector, sales, customer, revenue, and price columns.
+- Convert numeric columns to proper number types.
+- Convert 'year' and 'month' into numeric columns.
+- Check for duplicate rows.
+- Save cleaned data to 'data/cleaned/'.
 
 Specific cleaning steps for this dataset:
-- Remove extra header rows that are being read as regular data
-- Use meaningful column names instead of 'Unnamed' columns
-- Rename columns to lowercase with underscores
-- Keep useful time columns such as year and month
-- Keep the location column for state
-- Keep electricity sector data such as residential, commercial, industrial, transportation, and total
-- Keep key measurement columns related to sales, customers, and price
-- Convert sales values from text with commas into numeric values
-- Convert customer counts from text with commas into numeric values
-- Convert price values into numeric decimals
-- Remove the footer note row at the bottom of the dataset
-- Save the cleaned dataset as 'utility_usage_cleaned.csv' in 'data/cleaned/'
+- Remove the first two rows that are being read as regular data but actually contain header and unit information.
+- Use meaningful column names instead of 'Unnamed' columns.
+- Build final column names using:
+  - base columns: 'year',' 'month', 'state', 'data_status'
+  - sector names: 'residential', 'commercial', 'industrial', 'transportation', and 'total'
+  - measurement names: 'revenue_thousand_dollars', 'sales_megawatthours', 'customers_count', and 'price_cents_kwh'
+- Keep useful time columns such as 'year' and 'month'.
+- Keep the location column 'state'.
+- Keep electricity sector data for residential, commercial, industrial, transportation, and total usage.
+- Keep key measurement columns related to revenue, sales, customers, and price.
+- Remove commas from revenue, sales, and customer count values.
+- Convert revenue, sales, customer count, and price columns into numeric values.
+- Convert 'year' and 'month' into numeric values.
+- Remove the footer note row at the bottom of the dataset.
+- Check for duplicate rows and remove them if any exist.
+- Save the cleaned dataset as 'eia_sales_revenue_monthly_states_cleaned.csv' in 'data/cleaned/'.
 
 ### Column Selection Decision
-At this stage, all columns will be kept temporaroly. Although many columns currently apeear as 'unamed' columns, they should not be removed yet becuase this data set has multi-row reader. Some of these columns contain important information such as year, month, state, data status, sales, customers, and price.
 
-The column selection step will be revisited after the header rows are cleaned and meaningful column names are created. This avoids accidentally deleting useful data before the dataset structure is fully understood.
+At this stage, all meaningful columns are being kept. Although many columns originally appeared as 'Unnamed' columns, they were not removed immediately because the dataset used a multi-row header structure. Some of those columns contained important information such as year, month, state, data status, revenue, sales, customers, and price.
+
+After rebuilding the column names, the dataset contains useful time, location, sector, and measurement columns. Since all of these columns may support future analysis, no major columns were removed at this stage.
 
 ### Missing Values Decision
 
-Missing values will not be filled or dropped immediately. The current missing values appear to come mainly from the dataset's multi-row header structure and non-data rows.
+Missing values were not filled or dropped immediately because the initial missing values appeared to come mainly from the dataset's multi-row header structure and footer note row.
 
-The plan is to clean the header structure first, remove non-data rows, and then check missing values again on the cleaned dataset.
+The cleaning process first rebuilt the header structure, removed non-data rows, and then checked missing values again on the cleaned dataset.
 
-After header cleanup:
-- Rows missing year, month, or state will be removed.
-- Rows missing important numeric fields such as sales, customers, or price will be investigated.
+After removing the extra header rows and footer note row, the important columns no longer showed missing values.
+
+Missing values strategy:
+- Rows missing 'year', 'month', or 'state' would be removed because time and location are necessary for analysis.
+- Rows missing important numeric fields such as sales, customers, revenue, or price would be investigated before removal.
 - Numeric values will not be filled with guesses.
 - Category fields may be filled with 'Unknown' only if needed.

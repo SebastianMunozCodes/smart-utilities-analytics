@@ -3,4 +3,4 @@ __pycache__/
 .env
 .DS_Store
 database/*.db
-.venv/
+.venv/reports/inspection_outputs/
