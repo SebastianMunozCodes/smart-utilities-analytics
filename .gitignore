@@ -3,4 +3,5 @@ __pycache__/
 .env
 .DS_Store
 database/*.db
-.venv/reports/inspection_outputs/
+.venv/
+review/

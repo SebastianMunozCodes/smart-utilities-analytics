@@ -1,0 +1,118 @@
+Raw data loaded.
+Initial shape: (9897, 24)
+
+Initial column names standardized.
+
+Meaningful column names rebuilt.
+Column count: 24
+
+Non-data header rows and footer note row removed
+Shape after removing non-data rows: (9894, 24)
+
+Missing values after column selection:
+year                                       0
+month                                      0
+state                                      0
+data_status                                0
+residential_revenue_thousand_dollars       0
+residential_sales_megawatthours            0
+residential_customers_count                0
+residential_price_cents_kwh                0
+commercial_revenue_thousand_dollars        0
+commercial_sales_megawatthours             0
+commercial_customers_count                 0
+commercial_price_cents_kwh                 0
+industrial_revenue_thousand_dollars        0
+industrial_sales_megawatthours             0
+industrial_customers_count                 0
+industrial_price_cents_kwh                 0
+transportation_revenue_thousand_dollars    0
+transportation_sales_megawatthours         0
+transportation_customers_count             0
+transportation_price_cents_kwh             0
+total_revenue_thousand_dollars             0
+total_sales_megawatthours                  0
+total_customers_count                      0
+total_price_cents_kwh                      0
+dtype: int64
+
+Data types after numeric conversion:
+year                                         int64
+month                                        int64
+state                                          str
+data_status                                    str
+residential_revenue_thousand_dollars         int64
+residential_sales_megawatthours              int64
+residential_customers_count                  int64
+residential_price_cents_kwh                float64
+commercial_revenue_thousand_dollars          int64
+commercial_sales_megawatthours               int64
+commercial_customers_count                   int64
+commercial_price_cents_kwh                 float64
+industrial_revenue_thousand_dollars          int64
+industrial_sales_megawatthours               int64
+industrial_customers_count                   int64
+industrial_price_cents_kwh                 float64
+transportation_revenue_thousand_dollars      int64
+transportation_sales_megawatthours           int64
+transportation_customers_count               int64
+transportation_price_cents_kwh             float64
+total_revenue_thousand_dollars               int64
+total_sales_megawatthours                    int64
+total_customers_count                        int64
+total_price_cents_kwh                      float64
+dtype: object
+
+Shape before removing duplicates:
+(9894, 24)
+
+Number of duplicate rows:
+0
+
+Shape after removing duplicates:
+(9894, 24)
+
+Final missing values:
+year                                       0
+month                                      0
+state                                      0
+data_status                                0
+residential_revenue_thousand_dollars       0
+residential_sales_megawatthours            0
+residential_customers_count                0
+residential_price_cents_kwh                0
+commercial_revenue_thousand_dollars        0
+commercial_sales_megawatthours             0
+commercial_customers_count                 0
+commercial_price_cents_kwh                 0
+industrial_revenue_thousand_dollars        0
+industrial_sales_megawatthours             0
+industrial_customers_count                 0
+industrial_price_cents_kwh                 0
+transportation_revenue_thousand_dollars    0
+transportation_sales_megawatthours         0
+transportation_customers_count             0
+transportation_price_cents_kwh             0
+total_revenue_thousand_dollars             0
+total_sales_megawatthours                  0
+total_customers_count                      0
+total_price_cents_kwh                      0
+dtype: int64
+
+Preview of cleaned data:
+   year  month state  data_status  residential_revenue_thousand_dollars  residential_sales_megawatthours  residential_customers_count  residential_price_cents_kwh  commercial_revenue_thousand_dollars  commercial_sales_megawatthours  commercial_customers_count  commercial_price_cents_kwh  industrial_revenue_thousand_dollars  industrial_sales_megawatthours  industrial_customers_count  industrial_price_cents_kwh  transportation_revenue_thousand_dollars  transportation_sales_megawatthours  transportation_customers_count  transportation_price_cents_kwh  total_revenue_thousand_dollars  total_sales_megawatthours  total_customers_count  total_price_cents_kwh
+0  2026      2    AK  Preliminary                                 50987                           197690                       306093                        25.79                                50924                          226436                       60814                       22.49                                25176                          120963                        1231                       20.81                                        0                                   0                               0                            0.00                          127086                     545089                 368138                  23.31
+1  2026      2    AL  Preliminary                                460002                          2843188                      2442669                        16.18                               254014                         1693249                      398302                       15.00                               198513                         2647413                        7215                        7.50                                        0                                   0                               0                            0.00                          912530                    7183850                2848186                  12.70
+2  2026      2    AR  Preliminary                                233867                          1837576                      1497378                        12.73                                99892                          858103                      208144                       11.64                               113900                         1779057                       35190                        6.40                                        2                                  17                               2                           13.55                          447661                    4474753                1740714                  10.00
+3  2026      2    AZ  Preliminary                                326176                          2035050                      3200480                        16.03                               322226                         2748417                      352677                       11.72                                81916                         1158945                        7074                        7.07                                       76                                 769                               2                            9.90                          730395                    5943182                3560233                  12.29
+4  2026      2    CA  Preliminary                               1931467                          5814821                     13834527                        33.22                              2122724                         8582835                     1717766                       24.73                               558492                         2953663                      135970                       18.91                                     9322                               56110                              13                           16.61                         4622005                   17407428               15688276                  26.55
+
+Last rows of cleaned data:
+      year  month state data_status  residential_revenue_thousand_dollars  residential_sales_megawatthours  residential_customers_count  residential_price_cents_kwh  commercial_revenue_thousand_dollars  commercial_sales_megawatthours  commercial_customers_count  commercial_price_cents_kwh  industrial_revenue_thousand_dollars  industrial_sales_megawatthours  industrial_customers_count  industrial_price_cents_kwh  transportation_revenue_thousand_dollars  transportation_sales_megawatthours  transportation_customers_count  transportation_price_cents_kwh  total_revenue_thousand_dollars  total_sales_megawatthours  total_customers_count  total_price_cents_kwh
+9889  2010      1    VT       Final                                 33140                           224184                       306619                        14.78                                22681                          174617                       50270                       12.99                                11566                          121752                         220                        9.50                                        0                                   0                               0                            0.00                           67388                     520552                 357109                  12.95
+9890  2010      1    WA       Final                                320087                          4160946                      2812518                         7.69                               182753                         2544235                      352303                        7.18                                86481                         2149168                       24640                        4.02                                       38                                 530                               7                            7.17                          589359                    8854879                3189468                   6.66
+9891  2010      1    WI       Final                                275175                          2298172                      2596588                        11.97                               188311                         1960624                      338810                        9.60                               119389                         1833014                        4032                        6.51                                        0                                   0                               0                            0.00                          582875                    6091810                2939430                   9.57
+9892  2010      1    WV       Final                                128620                          1567536                       868434                         8.21                                49910                          688972                      137000                        7.24                                51652                          904486                       12251                        5.71                                       34                                 348                               1                            9.77                          230215                    3161342                1017686                   7.28
+9893  2010      1    WY       Final                                 27801                           345944                       257183                         8.04                                26282                          372045                       59474                        7.06                                42265                          860342                        8630                        4.91                                        0                                   0                               0                            0.00                           96349                    1578332                 325287                   6.10
+
+Cleaned data saved to data/cleaned/eia_sales_revenue_monthly_states_cleaned.csv
