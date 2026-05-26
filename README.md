@@ -121,6 +121,46 @@ Possible questions to answer:
 - Generate summary reports
 - Create charts
 
+## Current Progress
+
+Completed:
+- Project folder and structure created.
+- Raw EIA electricity dataset added.
+- Raw Excel file converted into CSV format.
+- Raw dataset inspected with Python.
+- Multi-row header structure identified.
+- Cleaned dataset created using Pandas.
+- Numeric columns converted into proper data types.
+- Duplicate rows checked.
+- Cleaned dataset saved to `data/cleaned/`.
+- Pandas summary analysis created in `src/analyze_pandas.py`.
+- Charts created and saved in the `charts/` folder.
+- Pandas analysis notes added in `reports/pandas_analysis_notes.md`.
+
+Current analysis includes:
+- Top 10 states by total electricity sales.
+- Top 10 states by average electricity price.
+- Top 10 states by total electricity revenue.
+- Average electricity sales by month.
+- Top 10 state-year-month electricity sales records.
+- Revenue and price comparisons for the top electricity sales records.
+
+Charts created:
+- `charts/top_10_states_by_total_sales.png`
+- `charts/top_10_states_by_average_price.png`
+- `charts/top_10_states_by_total_revenue.png`
+- `charts/average_electricity_sales_by_month.png`
+- `charts/top_10_records_total_sales.png`
+- `charts/top_10_records_total_revenue.png`
+- `charts/top_10_records_total_price.png`
+
+Early findings:
+- Texas had the highest total electricity sales across the dataset.
+- California had the highest total electricity revenue.
+- Hawaii had the highest average electricity price.
+- Average electricity sales were highest in July and August.
+- The top 10 state-year-month electricity sales records were all from Texas during July, August, or September.
+
 ## Cleaning Plan
 
 Cleaning steps planned:

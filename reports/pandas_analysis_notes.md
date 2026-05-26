@@ -26,3 +26,41 @@ Key early observations:
 - California had the highest total electricity revenue.
 - Average electricity sales were highest during the summer months, especially July and August.
 - The highest individual electricity sales records were Texas summer records.
+
+## Summaries Created
+
+Using the cleaned EIA electricity dataset, I created five Pandas summary outputs:
+
+1. Top 10 states by total electricity sales.
+2. Top 10 states by average electricity price.
+3. Top 10 states by total electricity revenue.
+4. Average electricity sales by month.
+5. Top 10 state-year-month records ranked by total electricity sales, with revenue and price included for context.
+
+## Charts Created
+
+The following charts were created and saved in the `charts/` folder:
+
+- `charts/top_10_states_by_total_sales.png`
+- `charts/top_10_states_by_average_price.png`
+- `charts/top_10_states_by_total_revenue.png`
+- `charts/average_electricity_sales_by_month.png`
+- `charts/top_10_records_total_sales.png`
+- `charts/top_10_records_total_revenue.png`
+- `charts/top_10_records_total_price.png`
+
+## Early Findings
+
+Initial Pandas analysis shows that total electricity sales, electricity revenue, and electricity prices vary significantly by state and month.
+
+Texas had the highest total electricity sales across the dataset, followed by California and Florida. California had the highest total electricity revenue, followed by Texas and Florida. This suggests that the state with the highest electricity sales is not necessarily the state with the highest electricity revenue.
+
+Hawaii had the highest average electricity price, followed by Connecticut and Alaska. This shows that states with the highest electricity prices are different from the states with the highest total electricity sales.
+
+Average electricity sales were highest during the summer months, especially July and August. The lowest average electricity sales occurred in April. This suggests a seasonal pattern where electricity demand rises during the summer.
+
+The top 10 individual state-year-month electricity sales records were all from Texas, mostly during July, August, and September. This supports the idea that Texas has especially high electricity demand during summer months.
+
+## Next Steps
+
+The next step is to use SQL to reproduce some of these Pandas summaries and compare the results. After that, the project can move toward a final report that explains the main findings using both tables and charts.
