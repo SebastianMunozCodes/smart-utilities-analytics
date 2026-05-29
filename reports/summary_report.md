@@ -1,18 +1,4 @@
-from pathlib import Path
-import pandas as pd
-
-current_dir = Path(__file__).parent
-project_root = current_dir.parent
-
-cleaned_csv_path = project_root / "data" / "cleaned" / "eia_sales_revenue_monthly_states_cleaned.csv"
-report_path = project_root / "reports" / "summary_report.md"
-
-df = pd.read_csv(cleaned_csv_path)
-
-record_count = len(df)
-column_count = len(df.columns)
-
-report_content = f"""# Smart Utilities Analytics Report
+# Smart Utilities Analytics Report
 
 ## Overview
 
@@ -32,11 +18,11 @@ Cleaned dataset file:
 
 Number of records:
 
-{record_count:,}
+9,894
 
 Number of columns:
 
-{column_count:,}
+24
 
 Unit of analysis:
 
@@ -71,7 +57,7 @@ Cleaning steps performed:
 - Checked for duplicate rows.
 - Saved the cleaned dataset to `data/cleaned/`.
 
-The cleaned dataset contains {record_count:,} rows and {column_count:,} columns.
+The cleaned dataset contains 9,894 rows and 24 columns.
 
 ## Analysis Workflow
 
@@ -205,8 +191,3 @@ Future improvements for this project could include:
 - Expand the report generation script so it calculates more values dynamically instead of relying mostly on known findings.
 
 These improvements would make the project more interactive, more reusable, and more useful as a portfolio-level data analytics project.
-"""
-
-report_path.write_text(report_content, encoding="utf-8")
-
-print(f"Summary report generated successfully: {report_path}")
