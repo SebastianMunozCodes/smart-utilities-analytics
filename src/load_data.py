@@ -1,49 +1,86 @@
-# Import Path from pathlib so we can build file paths in a clean way.
-# This helps us avoid hardcoding the full Mac file path.
 from pathlib import Path 
+import sqlite3
+import pandas as pd
 
-# Import Python's built-in CSV module so we can read CSV files properly.
-import csv 
-
-# Path(__file__).parent gets the folder that load_data.py is inside.
-# Since load_data.py is inside src/, current_dir becomes the src folder.
 current_dir = Path(__file__).parent
-
-# Since current_dir is src/, project_root becomes the main project folder:
-# smart-utilities-analytics/
 project_root = current_dir.parent
+cleaned_csv_path = project_root / "data" / "cleaned" / "eia_sales_revenue_monthly_states_cleaned.csv"
 
+database_path = project_root / "database" / "utilities.db"
 
-# Build the path to the raw CSV file.
-# This creates:
-# smart-utilities-analytics/data/raw/eia_sales_revenue_monthly_states.csv
-csv_path = project_root / "data" / "raw" / "eia_sales_revenue_monthly_states.csv"
+df = pd.read_csv(cleaned_csv_path)
 
+connection = sqlite3.connect(database_path)
+cursor = connection.cursor()
 
-# Open the CSV file in read mode.
-# mode='r' means we are reading the file, not writing to it.
-# encoding="utf-8-sig" tells Python to read the file as UTF-8
-# and automatically remove the Excel byte-order mark if it exists.
-# The with statement automatically closes the file when we are done.
-with open(csv_path, mode='r', encoding="utf-8-sig") as file:
+for row in df.itertuples():
+    cursor.execute("""
+        INSERT INTO electricity_sales(
+            year,
+            month,
+            state,
+            data_status,
+            residential_revenue_thousand_dollars,
+            residential_sales_megawatthours,
+            residential_customers_count,
+            residential_price_cents_kwh,
+            commercial_revenue_thousand_dollars,
+            commercial_sales_megawatthours,
+            commercial_customers_count,
+            commercial_price_cents_kwh,
+            industrial_revenue_thousand_dollars,
+            industrial_sales_megawatthours,
+            industrial_customers_count,
+            industrial_price_cents_kwh,
+            transportation_revenue_thousand_dollars,
+            transportation_sales_megawatthours,
+            transportation_customers_count,
+            transportation_price_cents_kwh,
+            total_revenue_thousand_dollars,
+            total_sales_megawatthours,
+            total_customers_count,
+            total_price_cents_kwh
+        )
+        VALUES(
+            ?, ?, ?, ?, 
+            ?, ?, ?, ?, 
+            ?, ?, ?, ?, 
+            ?, ?, ?, ?, 
+            ?, ?, ?, ?, 
+            ?, ?, ?, ?
+        )
+    """,(
+        row.year,
+        row.month,
+        row.state,
+        row.data_status,
+        row.residential_revenue_thousand_dollars,
+        row.residential_sales_megawatthours,
+        row.residential_customers_count,
+        row.residential_price_cents_kwh,
+        row.commercial_revenue_thousand_dollars,
+        row.commercial_sales_megawatthours,
+        row.commercial_customers_count,
+        row.commercial_price_cents_kwh,
+        row.industrial_revenue_thousand_dollars,
+        row.industrial_sales_megawatthours,
+        row.industrial_customers_count,
+        row.industrial_price_cents_kwh,
+        row.transportation_revenue_thousand_dollars,
+        row.transportation_sales_megawatthours,
+        row.transportation_customers_count,
+        row.transportation_price_cents_kwh,
+        row.total_revenue_thousand_dollars,
+        row.total_sales_megawatthours,
+        row.total_customers_count,
+        row.total_price_cents_kwh
+    ))
 
-    # Create a CSV reader object.
-    csv_reader = csv.reader(file)
+connection.commit()
 
-    # Read the first row of the CSV manually.
-    # next(csv_reader) grabs the next available row.
-    # In this dataset, the first row contains sector labels like RESIDENTIAL and COMMERCIAL.
-    header = next(csv_reader)
+cursor.execute("SELECT COUNT(*) FROM electricity_sales")
+row_count = cursor.fetchone()[0]
 
+connection.close()
 
-    # Print the first row so we can inspect the raw structure of the CSV.
-    print("HEADER:", header)
-    print("-" * 50)
-
-    # Loop through the remaining rows in the CSV.
-    for i, row in enumerate(csv_reader):
-        if i < 5:
-            print(f'Row {i+1}: {row}')
-        else:
-            break
-
+print(f"Inserted {row_count} rows into electricity_sales.")
