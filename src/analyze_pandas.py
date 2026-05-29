@@ -309,8 +309,8 @@ top_10_usage_records_display = top_10_usage_records[
         "state",
         "year",
         "month",
-        "total_revenue_thousand_dollars",
         "total_sales_megawatthours",
+        "total_revenue_thousand_dollars",
         "total_price_cents_kwh"
     ]
 ].copy()
@@ -320,8 +320,8 @@ top_10_usage_records_display = top_10_usage_records_display.rename(
         "state": "State",
         "year": "Year",
         "month": "Month",
-        "total_revenue_thousand_dollars": "Total Revenue (Thousand $)",
         "total_sales_megawatthours": "Total Sales (MWh)",
+        "total_revenue_thousand_dollars": "Total Revenue (Thousand $)",
         "total_price_cents_kwh": "Total Price (Cents/kWh)"
     }
 )

@@ -263,21 +263,24 @@ SQL analysis is handled in:
 src/analyze_sql.py
 ```
 
-Current SQL analysis includes:
+Current SQL analysis reproduces the five main Pandas summaries using SQLite queries:
 
-- Counting total rows in the `electricity_sales` table
-- Grouping electricity sales by state
-- Ranking states by total electricity sales
+- Top 10 states by total electricity sales
+- Top 10 states by average electricity price
+- Top 10 states by total electricity revenue
+- Average electricity sales by month
+- Top 10 state-year-month records ranked by total electricity sales, with revenue and price included for context
 
-The SQL result for top states by total electricity sales matched the Pandas result.
+The SQL analysis confirms the same main findings as the Pandas analysis:
 
-Top states by total electricity sales:
+- Texas had the highest total electricity sales.
+- Hawaii had the highest average electricity price.
+- California had the highest total electricity revenue.
+- Average electricity sales were highest in July and August.
+- Average electricity sales were lowest in April.
+- The top 10 individual state-year-month electricity sales records were all Texas summer records.
 
-1. Texas
-2. California
-3. Florida
-4. Ohio
-5. Pennsylvania
+The SQL output uses custom terminal formatting, so the display order may differ slightly from the Pandas DataFrame output. However, the rankings, values, and findings match the Pandas analysis.
 
 ## Early Findings
 
@@ -357,6 +360,7 @@ Additional project notes are stored in:
 
 - `reports/cleaning_notes.md`
 - `reports/pandas_analysis_notes.md`
+- `reports/sql_analysis_notes.md`
 
 A SQL notes file may be added later as the SQL analysis phase expands.
 

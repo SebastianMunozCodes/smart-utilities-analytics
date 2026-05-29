@@ -1,89 +1,149 @@
-# SQL Setup Notes
+# SQL Analysis Notes
 
-The cleaned EIA electricity dataset was loaded into a SQLite database.
+## Purpose
 
-## Database Created
+The purpose of this SQL analysis was to reproduce the five main Pandas summaries using SQLite.
 
-`database/utilities.db`
+Earlier in the project, the cleaned EIA electricity dataset was analyzed with Pandas. The SQL analysis uses the same cleaned data, loaded into a SQLite table, to confirm that the same major findings appear when using SQL queries.
 
-## Main Table Created
+This helps verify that the project results are consistent across both Pandas DataFrame operations and SQL database queries.
 
-`electricity_sales`
+## Database Used
 
-The table stores cleaned monthly electricity data by state, including electricity sales, revenue, customer counts, and retail price data across residential, commercial, industrial, transportation, and total sectors.
-
-## Database Scripts
-
-The SQLite table is created by:
-
-`src/setup_database.py`
-
-The cleaned CSV data is loaded into the table by:
-
-`src/load_data.py`
-
-SQL analysis queries are run from:
-
-`src/analyze_sql.py`
-
-## Row Count Test
-
-The first SQL test query counted the number of rows in the table:
-
-```sql
-SELECT COUNT(*)
-FROM electricity_sales;
-```
-
-The query returned:
+Database file:
 
 ```text
-9894
+database/utilities.db
 ```
 
-This matched the number of rows in the cleaned CSV file.
+Main table:
 
-## Initial SQL Aggregation Query
-
-A second SQL test query grouped records by state and calculated total electricity sales:
-
-```sql
-SELECT state, SUM(total_sales_megawatthours) AS total_sales_megawatthours_sum
-FROM electricity_sales
-GROUP BY state
-ORDER BY total_sales_megawatthours_sum DESC
-LIMIT 10;
+```text
+electricity_sales
 ```
 
-## SQL Findings
+The `electricity_sales` table stores monthly electricity sales, revenue, customer count, and retail price data by state and sector.
 
-The SQL query confirmed that Texas had the highest total electricity sales.
+## Queries Created
 
-The top 10 states by total electricity sales were:
+The SQL analysis reproduces the five main Pandas summaries:
 
-1. Texas
-2. California
-3. Florida
-4. Ohio
-5. Pennsylvania
-6. New York
-7. Georgia
-8. Illinois
-9. North Carolina
-10. Virginia
+1. Top 10 states by total electricity sales
+2. Top 10 states by average electricity price
+3. Top 10 states by total electricity revenue
+4. Average electricity sales by month
+5. Top 10 state-year-month records ranked by total electricity sales, with revenue and price included for context
 
-This matched the earlier Pandas analysis for top states by total electricity sales.
+## Query 1: Top 10 States by Total Electricity Sales
 
-## Recreating the Database
+This query groups the data by state and calculates the total electricity sales for each state using `SUM(total_sales_megawatthours)`.
 
-The database file `database/utilities.db` is treated as a generated local file and is ignored by Git through `.gitignore`.
+SQL tools used:
 
-The database can be recreated by running these commands from the project root:
+- `SELECT`
+- `SUM`
+- `GROUP BY`
+- `ORDER BY`
+- `LIMIT`
 
-```bash
-python3 src/setup_database.py
-python3 src/load_data.py
-python3 src/analyze_sql.py
+The result shows which states had the highest total electricity sales across the dataset.
+
+The SQL result matched the earlier Pandas analysis. Texas had the highest total electricity sales, followed by California and Florida.
+
+## Query 2: Top 10 States by Average Electricity Price
+
+This query groups the data by state and calculates the average electricity price for each state using `AVG(total_price_cents_kwh)`.
+
+SQL tools used:
+
+- `SELECT`
+- `AVG`
+- `GROUP BY`
+- `ORDER BY`
+- `LIMIT`
+
+The result shows which states had the highest average electricity prices across the dataset.
+
+The SQL result matched the earlier Pandas analysis. Hawaii had the highest average electricity price, followed by Connecticut and Alaska.
+
+## Query 3: Top 10 States by Total Electricity Revenue
+
+This query groups the data by state and calculates the total electricity revenue for each state using `SUM(total_revenue_thousand_dollars)`.
+
+SQL tools used:
+
+- `SELECT`
+- `SUM`
+- `GROUP BY`
+- `ORDER BY`
+- `LIMIT`
+
+The result shows which states had the highest total electricity revenue across the dataset.
+
+The SQL result matched the earlier Pandas analysis. California had the highest total electricity revenue, followed by Texas and Florida.
+
+## Query 4: Average Electricity Sales by Month
+
+This query groups the data by month and calculates the average electricity sales for each month using `AVG(total_sales_megawatthours)`.
+
+SQL tools used:
+
+- `SELECT`
+- `AVG`
+- `GROUP BY`
+- `ORDER BY`
+
+The query sorts by month number so the results appear in calendar order from January through December.
+
+The SQL result matched the earlier Pandas analysis. Average electricity sales were highest during July and August, while April had the lowest average electricity sales.
+
+This supports the finding that electricity demand follows a seasonal pattern, with higher demand during the summer months.
+
+## Query 5: Top 10 State-Year-Month Records by Total Electricity Sales
+
+This query selects individual state-year-month records and sorts them by `total_sales_megawatthours` from highest to lowest.
+
+SQL tools used:
+
+- `SELECT`
+- `ORDER BY`
+- `LIMIT`
+
+Unlike the first four queries, this query does not use `GROUP BY`. It is a row-level query that returns the individual monthly records with the highest electricity sales.
+
+The query includes:
+
+- State
+- Year
+- Month
+- Total sales
+- Total revenue
+- Total price
+- A combined record label
+
+The SQL output displays total sales before total revenue because the records are ranked by total electricity sales. This differs slightly from the Pandas display order, but the records, values, and findings match.
+
+The SQL result matched the earlier Pandas analysis. The top 10 individual state-year-month electricity sales records were all Texas records from summer months, mostly July, August, and September.
+
+## Overall SQL Findings
+
+The SQL analysis reproduced the main Pandas findings:
+
+- Texas had the highest total electricity sales.
+- Hawaii had the highest average electricity price.
+- California had the highest total electricity revenue.
+- Average electricity sales were highest in July and August.
+- The highest individual monthly electricity sales records were Texas summer records.
+
+## Conclusion
+
+The SQL analysis confirmed the same main findings as the Pandas analysis.
+
+This strengthens the project because the same cleaned dataset was analyzed in two different ways:
+
+```text
+Pandas DataFrame operations
+SQLite SQL queries
 ```
 
-Important: `src/setup_database.py` drops and recreates the `electricity_sales` table. If it is run after loading the data, `src/load_data.py` must be run again.
+Both approaches produced matching rankings, values, and conclusions.
