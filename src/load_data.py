@@ -83,4 +83,6 @@ row_count = cursor.fetchone()[0]
 
 connection.close()
 
+print(f"Cleaned CSV rows: {len(df)}")
+print(f"Database rows: {row_count}")
 print(f"Inserted {row_count} rows into electricity_sales.")
