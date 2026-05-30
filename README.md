@@ -427,24 +427,6 @@ Additional project notes are stored in:
 - `reports/sql_analysis_notes.md`
 - `reports/summary_report.md`
 
-## What I Learned
-
-This project helped reinforce how to move from raw data to a reproducible analysis workflow.
-
-Key takeaways:
-
-- How to clean a messy real-world dataset with Pandas.
-- How to handle multi-row headers.
-- How to rebuild meaningful column names.
-- How to convert text-based numeric columns into proper numeric data.
-- How to use `groupby()`, `sum()`, `mean()`, sorting, and filtering in Pandas.
-- How to create charts with Matplotlib.
-- How to create a SQLite database and database table.
-- How to load cleaned CSV data into SQLite.
-- How to reproduce Pandas analysis using SQL queries.
-- How to validate analysis results across Pandas and SQL.
-- How to write a generated report explaining data findings.
-
 ## Future Improvements
 
 Future improvements for this project could include:
