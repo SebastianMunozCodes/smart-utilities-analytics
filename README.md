@@ -12,6 +12,30 @@ The project demonstrates a full data workflow:
 Raw EIA data → cleaned CSV → Pandas analysis → charts → SQLite database → SQL analysis → generated report
 ```
 
+## Table of Contents
+
+- [Overview](#overview)
+- [Motivation](#motivation)
+- [Dataset](#dataset)
+- [Dataset Files](#dataset-files)
+- [Dataset Columns](#dataset-columns)
+- [Tools Used](#tools-used)
+- [Features](#features)
+- [Project Structure](#project-structure)
+- [Folder Responsibilities](#folder-responsibilities)
+- [Script Responsibilities](#script-responsibilities)
+- [Data Cleaning Summary](#data-cleaning-summary)
+- [Pandas Analysis](#pandas-analysis)
+- [Database Setup](#database-setup)
+- [SQL Analysis](#sql-analysis)
+- [How to Recreate the Database](#how-to-recreate-the-database)
+- [How to Run](#how-to-run)
+- [Example Analysis](#example-analysis)
+- [Charts](#charts)
+- [Generated Report](#generated-report)
+- [Reports](#reports)
+- [Future Improvements](#future-improvements)
+
 ## Motivation
 
 This project was created to practice data management, data cleaning, SQL analysis, data visualization, and reporting skills using a real-world utility dataset.
