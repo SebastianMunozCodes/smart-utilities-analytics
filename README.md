@@ -459,6 +459,7 @@ Additional project notes are stored in:
 - `reports/pandas_analysis_notes.md`
 - `reports/sql_analysis_notes.md`
 - `reports/summary_report.md`
+- `reports/resume_bullets.md`
 
 ## Future Improvements
 
