@@ -414,17 +414,26 @@ The SQL analysis reproduced the main Pandas summaries, confirming the consistenc
 
 ## Charts
 
-The project generated seven Matplotlib charts:
+The project generated seven Matplotlib charts. A few key charts are shown below.
 
-- `charts/top_10_states_by_total_sales.png`
-- `charts/top_10_states_by_average_price.png`
+### Top 10 States by Total Electricity Sales
+
+![Top 10 states by total electricity sales](charts/top_10_states_by_total_sales.png)
+
+### Top 10 States by Average Electricity Price
+
+![Top 10 states by average electricity price](charts/top_10_states_by_average_price.png)
+
+### Average Electricity Sales by Month
+
+![Average electricity sales by month](charts/average_electricity_sales_by_month.png)
+
+Additional charts created:
+
 - `charts/top_10_states_by_total_revenue.png`
-- `charts/average_electricity_sales_by_month.png`
 - `charts/top_10_records_total_sales.png`
 - `charts/top_10_records_total_revenue.png`
 - `charts/top_10_records_total_price.png`
-
-The charts show state-level comparisons, monthly electricity sales trends, and record-level analysis for the top state-year-month electricity sales records.
 
 ## Generated Report
 
